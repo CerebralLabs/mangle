@@ -1,6 +1,7 @@
 {
-    "name": "mangle",
-    "tree": {
-        "$path": "src"
-    }
+  "name": "mangle",
+  "tree": {
+    "$path": "src"
+  }
 }
+    

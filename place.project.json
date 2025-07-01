@@ -1,5 +1,5 @@
 {
-	"name": "Cerebral",
+	"name": "mangel",
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {
@@ -7,7 +7,7 @@
 			"Packages": {
 				"$path": "Packages",
 				"$ignoreUnknownInstances": true,
-				"Cerebral": {
+				"mangle": {
 					"$path": "default.project.json",
 					"$ignoreUnknownInstances": true
 				}
