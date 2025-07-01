@@ -3,6 +3,7 @@ name = "engel/mangle"
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
-exclude = ["aftman.toml","README.md","selene.toml",".luarc"]
+exclude = ["aftman.toml","README.md","selene.toml",".luarc","__test__","__test__/*"]
+include = ["src","src/*"]
 
 [dependencies]
