@@ -1,0 +1,6 @@
+{
+    "name": "mangle",
+    "tree": {
+        "$path": "src"
+    }
+}
