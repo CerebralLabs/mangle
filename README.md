@@ -14,7 +14,7 @@
 `mangle` is a post processing name mangler for `luau`, inspired by Python's [name mangler](https://docs.python.org/3/tutorial/classes.html#private-variables); what makes private variables private in Python.
 
 ## Reasoning
-In most intro to programming courses, we learn of `public` and `private` classes. These concepts are less about security and more about managing complexity. If a `private` variable causes a bug, the developer only needs to look within the class that its located. 
+In most intro to programming courses, we learn of `public` and `private` classes and variables. These concepts are less about security and more about managing complexity. If a `private` variable causes a bug, the developer only needs to look within the class that its located. 
 
 ## Supported Platforms
 `mangle` may be posted on [Wally](https://wally.run). We understand the use case is minimal.
