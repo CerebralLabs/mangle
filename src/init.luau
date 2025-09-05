@@ -8,6 +8,10 @@ local MANGLED_NAME = "__mangled"
 type FunctionName = string
 
 -- Private -- 
+--[[
+Removes the value of MANGLED_NAME from the provided string.
+This function does not test if MANGLED_NAME is a substring.
+]]
 local function deProtect(protectedString: string): string
     if string.match(protectedString, MANGLED_NAME) then
         return string.sub(protectedString, string.len(MANGLED_NAME) + 1, -1)
@@ -15,6 +19,9 @@ local function deProtect(protectedString: string): string
     return protectedString
 end
 
+--[[
+Protects the provided function with MANGLED_NAME
+]]
 local function protectFunction(class, key: string): (...any) -> (...any)
     return function(_self, ...)
         if class.__mangled__challengeBit then
@@ -25,6 +32,9 @@ local function protectFunction(class, key: string): (...any) -> (...any)
     end
 end
 
+--[[
+Protocol used when calling a function in the protected class.
+]]
 local function funcitonProtocol(
     class, 
     func: (_self: any, ...any) -> (...any)
@@ -55,6 +65,12 @@ local function funcitonProtocol(
 end
 
 -- Public --
+
+--[[
+Mangles the provided class.
+All keys in the class with `__` at the start will be mangled,
+and subsequently protected.
+]]
 local function mangle<A>(class: A & {}): A
     if class == nil then
         error(`[{script.Name}] Must have class (table)`)
@@ -77,13 +93,15 @@ local function mangle<A>(class: A & {}): A
                 continue
             end
 
-            -- protection "^__" non functions
+            -- protect "^__" non functions
             if typeof(value) ~= "function" then
                 class[MANGLED_NAME .. key] = value
                 class[key] = nil
 
                 continue
             end
+        -- Potential bug. What about protected functions calling
+        -- other protected functions?
         elseif key ~= "New" and typeof(key) == "function" then
             class[key] = funcitonProtocol(class, value)
         end
